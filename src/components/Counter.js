@@ -1,18 +1,21 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { decrement as decrementSum, increment as incrementSum } from "./sumSlice";
 
-function Counter(props) {
-
+function Counter() {
+    const dispatch = useDispatch();
     const [number, setNumber] = useState(0);
 
     function increment() {
         setNumber(number+1);
-        props.increment();
+        dispatch(incrementSum());
     }
 
     function decrement() {
         setNumber(number-1);
-        props.decrement();
+        dispatch(decrementSum());
     }
+
 
     return (
         <div>
