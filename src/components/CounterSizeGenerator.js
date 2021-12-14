@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateSize } from "./sizeSlice";
+import { RESET_SUM, UPDATE_SIZE } from "../constants/constants";
 
 function CounterSizeGenerator(props) {
 
@@ -11,7 +11,11 @@ function CounterSizeGenerator(props) {
         var counterSize = parseInt(event.target.value);
         counterSize = isNaN(counterSize) || counterSize < 0 ? 0 : counterSize;
         setSize(counterSize);
-        dispatch(updateSize(counterSize))
+        dispatch({type: UPDATE_SIZE, payload: counterSize});
+
+        if (counterSize === 0) {
+            dispatch({type: RESET_SUM});
+        }
     }
 
     return (

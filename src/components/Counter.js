@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { decrement as decrementSum, increment as incrementSum } from "./sumSlice";
+import { DECREMENT_SUM, INCREMENT_SUM } from "../constants/constants";
 
 function Counter() {
     const dispatch = useDispatch();
@@ -8,12 +8,12 @@ function Counter() {
 
     function increment() {
         setNumber(number+1);
-        dispatch(incrementSum());
+        dispatch({type: INCREMENT_SUM, payload: 1});
     }
 
     function decrement() {
         setNumber(number-1);
-        dispatch(decrementSum());
+        dispatch({type: DECREMENT_SUM, payload: 1});
     }
 
 

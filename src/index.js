@@ -4,14 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './components/store';
+import { createStore } from '@reduxjs/toolkit';
+import counterReducer from './reducers/counterReducer';
 
 
-// TODO: Do we need React.StrictMode?
+const newStore = createStore( counterReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={newStore}>
       <App />
     </Provider>
   </React.StrictMode>,

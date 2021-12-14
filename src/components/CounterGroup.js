@@ -5,7 +5,7 @@ import Counter from "./Counter";
 function CounterGroup(props) {
 
     const [counterList, setCounterList] = useState([]); 
-    const size = useSelector(state => state.size.value);
+    const size = useSelector(state => state.size);
 
     useEffect( () => {
         var newCounterList = new Array(size).fill(Date.now);
